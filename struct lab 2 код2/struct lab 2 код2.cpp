@@ -11,17 +11,17 @@
 #include <windows.h>
 #endif
 
-constexpr int N = 512;  // Уменьшенный размер матрицы для наглядности
+constexpr int N = 512; 
 
 // Функция для установки локали для поддержки русского языка
 void setRussianLocale() {
-    // Для Windows
+    
 #ifdef _WIN32
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
     setlocale(LC_ALL, "Russian");
 #else
-// Для Linux и других UNIX-подобных систем
+
     setlocale(LC_ALL, "ru_RU.UTF-8");
 #endif
 
@@ -50,24 +50,24 @@ void matrixMultiply(const std::vector<std::complex<float>>& A,
 }
 
 int main() {
-    // Установка русской локали
+    
     setRussianLocale();
 
-    // Вывод информации о студенте
+    
     std::cout << "Группа: АИС-020303-2024\n";
     std::cout << "Студент: Киtaев Максим Денисович\n\n";
 
-    // 1. Выделение памяти для матриц
+    
     std::vector<std::complex<float>> A(N * N);
     std::vector<std::complex<float>> B(N * N);
     std::vector<std::complex<float>> C(N * N);
 
-    // 2. Инициализация генератора случайных чисел
+    
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_real_distribution<float> dist(0.0f, 100.0f);
 
-    // 3. Заполнение матриц случайными значениями
+    
     for (auto& elem : A) {
         elem = { dist(gen), dist(gen) };
     }
@@ -78,7 +78,7 @@ int main() {
     // 4. Замер времени выполнения
     auto start = std::chrono::high_resolution_clock::now();
 
-    // 5. Умножение матриц
+    
     matrixMultiply(A, B, C);
 
     auto end = std::chrono::high_resolution_clock::now();
