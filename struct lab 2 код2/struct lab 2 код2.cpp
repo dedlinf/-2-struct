@@ -13,7 +13,7 @@
 
 constexpr int N = 512; 
 
-// Функция для установки локали для поддержки русского языка
+
 void setRussianLocale() {
     
 #ifdef _WIN32
